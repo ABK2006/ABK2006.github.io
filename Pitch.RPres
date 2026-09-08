@@ -1,0 +1,56 @@
+
+Predicting Diamond Prices with caret
+========================================================
+author: Arun
+date: `r format(Sys.Date(), "%B %d, %Y")`
+autosize: true
+
+Why Caret & Diamond Modeling?
+========================================================
+
+Diamond retail pricing often lacks transparency for prospective buyers.
+
+- **Objective:** Provide instant, machine-learning-driven price appraisals based on physical diamond metrics.
+- **Key Inputs:**
+  - Carat weight (continuous slider)
+  - Cut quality (ordered factor selection)
+  - Clarity grading (categorical dropdown)
+- **Engine:** Trained using the `caret` regression pipeline in R.
+
+Training Data: ggplot2::diamonds
+========================================================
+
+The underlying algorithm evaluates empirical diamond sales data:
+
+```{r load-data, echo=TRUE}
+library(ggplot2)
+data(diamonds)
+str(diamonds[, c("carat", "cut", "clarity", "price")])
+```
+
+
+
+Caret Model Training & Performance
+========================================================
+The application uses caret::train to fit an ordinary least squares model:
+
+library(caret)
+
+set.seed(123)
+
+fit <- train(price ~ carat + cut + clarity, data = diamonds[1:1000, ], method = "lm")
+
+fit$results[, c("RMSE", "Rsquared", "MAE")]
+
+========================================================
+Application Architecture & Links:
+
+Reactive Pipeline: User selections trigger dynamic predictions through the trained caret object.
+
+Embedded Instructions: Guidance documentation is placed directly on the sidebar for novice users.
+
+Access Resources:
+
+Live Shiny App: Deployed on shinyapps.io
+
+Source Code Repository: Available on GitHub (containing ui.R and server.R)
