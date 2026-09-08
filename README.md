@@ -18,4 +18,4 @@ This app [Predicting Diamond Prices with caret].
 **Repo Structure:**
 - `app.R` / `ui.R` & `server.R` - Shiny app code
 - `pitch.Rmd` - R Markdown for pitch presentation
-- `pitch.RPres` - Final presentation hosted on GitHub Pages
+- `pitch.html` - Final presentation hosted on GitHub Pages
